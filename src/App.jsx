@@ -1,4 +1,3 @@
-import React from "react";
 import Navbar from "./Components/Navbar";
 import Home from "./Components/Home";
 import { Route, Routes } from "react-router-dom";
@@ -12,6 +11,9 @@ import Rings from "./Pages/Rings";
 import Wallet from "./Pages/Wallet";
 import Watch from "./Pages/Watch";
 import Footer from "./Components/Footer";
+import About from "./Pages/About";
+import Contact from "./Pages/Contact";
+import Terms from "./Pages/Terms";
 
 export default function App() {
 
@@ -34,6 +36,9 @@ export default function App() {
           <Route path="/rings" element={<Rings />} />
           <Route path="/wallet" element={<Wallet />} />
           <Route path="/watch" element={<Watch />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/terms" element={<Terms />} />
         </Routes>
       </div>
       <div>

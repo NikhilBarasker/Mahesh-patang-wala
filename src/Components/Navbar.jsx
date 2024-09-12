@@ -4,6 +4,7 @@ import { MdGroups } from "react-icons/md";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import Logo from "../assets/Logo.png";
+import { IoMdHeartEmpty } from "react-icons/io";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -46,7 +47,14 @@ function Navbar() {
         placeholder="Search something..."
         className="xl:w-96 max-lg:w-full lg:ml-10 bg-gray-100 focus:bg-transparent px-6 rounded h-11 outline-[#333] text-sm transition-all"
       />
-      
+       <li className="max-lg:py-2 max-lg:px-3 cursor-pointer list-none lg:hidden">
+                <span className="relative">
+                  <IoMdHeartEmpty className="inline" size={22} />
+                  <span className="absolute left-auto -ml-1 -top-1 rounded-full bg-red-500 px-1 py-0 text-xs text-white">
+                    0
+                  </span>
+                </span>
+              </li>
       <li className="max-lg:py-2 max-lg:px-3 cursor-pointer list-none lg:hidden">
         <span className="relative">
           <FaShoppingCart className="inline" size={20} />
@@ -80,6 +88,15 @@ function Navbar() {
             Sign In
           </button>
         </li>
+
+        <li className="max-lg:hidden flex text-[15px] max-lg:py-2 px-3 cursor-pointer">
+                <span className="relative">
+                  <IoMdHeartEmpty className="inline" size={22} />
+                  <span className="absolute left-auto -ml-1 -top-1 rounded-full bg-red-500 px-1 py-0 text-xs text-white">
+                    0
+                  </span>
+                </span>
+              </li>
 
         {/* Cart icon for large screens */}
         <li className="max-lg:hidden flex text-[15px] max-lg:py-2 px-3 cursor-pointer">
