@@ -14,13 +14,18 @@ import Watch from "./Pages/Watch";
 import Footer from "./Components/Footer";
 
 export default function App() {
+
+  const productApi = "https://fakestoreapi.com/products";
+
   return (
     <div className="flex flex-col">
-      <Navbar />
-      <div className="pt-[60px]">
+      <div>
+        <Navbar />
+      </div>
+      <div className="mt-[220px] lg:mt-[130px]">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/bracelets" element={<Bracelets />} />
+          <Route path="/bracelets" element={<Bracelets api={productApi} />} />
           <Route path="/cap" element={<Cap />} />
           <Route path="/earring" element={<Earrings />} />
           <Route path="/goggles" element={<Goggles />} />
@@ -31,7 +36,9 @@ export default function App() {
           <Route path="/watch" element={<Watch />} />
         </Routes>
       </div>
-      <Footer />
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 }
