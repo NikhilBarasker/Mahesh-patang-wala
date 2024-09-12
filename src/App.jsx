@@ -12,6 +12,7 @@ import Rings from "./Pages/Rings";
 import Wallet from "./Pages/Wallet";
 import Watch from "./Pages/Watch";
 import Footer from "./Components/Footer";
+import ProductView from "./Pages/ProductView";
 
 export default function App() {
 
@@ -26,14 +27,15 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/bracelets" element={<Bracelets api={productApi} />} />
-          <Route path="/cap" element={<Cap />} />
-          <Route path="/earring" element={<Earrings />} />
-          <Route path="/goggles" element={<Goggles />} />
-          <Route path="/keychain" element={<KeyChain />} />
-          <Route path="/offers" element={<Offers />} />
-          <Route path="/rings" element={<Rings />} />
-          <Route path="/wallet" element={<Wallet />} />
-          <Route path="/watch" element={<Watch />} />
+          <Route path="/cap" element={<Cap api={productApi} />} />
+          <Route path="/earring" element={<Earrings api={productApi} />} />
+          <Route path="/goggles" element={<Goggles api={productApi} />} />
+          <Route path="/keychain" element={<KeyChain api={productApi} />} />
+          <Route path="/offers" element={<Offers api={productApi} />} />
+          <Route path="/rings" element={<Rings api={productApi} />} />
+          <Route path="/wallet" element={<Wallet api={productApi} />} />
+          <Route path="/watch" element={<Watch api={productApi} />} />
+          <Route path="/productview" element={<ProductView />} />
         </Routes>
       </div>
       <div>
