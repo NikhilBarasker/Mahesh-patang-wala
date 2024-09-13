@@ -132,53 +132,57 @@ function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        id="collapseMenu"
-        className={`fixed inset-0 z-50 bg-white transition-transform duration-500 ease-in-out transform ${menuOpen ? "translate-x-0" : "translate-x-full"
-          } flex flex-col justify-between`}
+  id="collapseMenu"
+  className={`fixed inset-0 z-50 bg-white transition-transform duration-500 ease-in-out transform ${
+    menuOpen ? "translate-x-0" : "translate-x-full"
+  } flex flex-col justify-between`}
+>
+  {/* Close Button */}
+  <button
+    id="toggleClose"
+    className="fixed top-4 right-4 z-50 p-3 rounded-full bg-gray-100 shadow-lg hover:shadow-2xl hover:bg-gray-200 transition-all duration-300 ease-in-out"
+    onClick={() => setMenuOpen(false)}
+  >
+    <AiOutlineClose className="w-7 h-7 text-gray-800" />
+  </button>
+
+  {/* Menu List */}
+  <ul className="flex flex-col flex-grow mt-16 space-y-6 overflow-y-auto">
+    {category.map((item) => (
+      <li
+        key={item.name}
+        onClick={() => handleNavigation(item.path)}
+        className="py-3 px-6 border-b border-gray-300 hover:bg-gray-100 cursor-pointer"
       >
-        {/* Close Button */}
-        <button
-          id="toggleClose"
-          className="fixed top-4 right-4 z-50 p-3 rounded-full bg-gray-100 shadow-lg hover:shadow-2xl hover:bg-gray-200 transition-all duration-300 ease-in-out"
-          onClick={() => setMenuOpen(false)}
+        <Link
+          to={item.path}
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="text-black text-lg font-semibold block"
         >
-          <AiOutlineClose className="w-7 h-7 text-gray-800" />
-        </button>
+          {item.name}
+        </Link>
+      </li>
+    ))}
+  </ul>
 
-        {/* Menu List */}
-        <ul className="flex flex-col flex-grow mt-16 space-y-6 overflow-y-auto">
-          {category.map((item) => (
-            <li
-              key={item.name}
-              onClick={() => handleNavigation(item.path)}
-              className="py-3 px-6 border-b border-gray-300 hover:bg-gray-100 cursor-pointer"
-            >
-              <a
-                href="javascript:void(0)"
-                className="text-black text-lg font-semibold block"
-              >
-                {item.name}
-              </a>
-            </li>
-          ))}
-        </ul>
+  {/* Sign In Button in Mobile Menu */}
+  <div className="px-6 py-4">
+    <Link to="/register"
+    onClick={() => setMenuOpen(!menuOpen)}
+    >
+      <button className="w-full px-4 py-2 text-xs sm:text-sm hover:bg-black hover:text-white rounded font-semibold text-[#333] border-2 border-[#333] bg-transparent">
+        Sign In
+      </button>
+    </Link>
+  </div>
 
-        {/* Sign In Button in Mobile Menu */}
-        <div className="px-6 py-4">
-         <Link to="/register">
-          <button className="w-full px-4 py-2 text-xs sm:text-sm hover:bg-black hover:text-white rounded font-semibold text-[#333] border-2 border-[#333] bg-transparent">
-            Sign In
-          </button>
-          </Link>
-        </div>
+  {/* Footer (Optional) */}
+  <div className="pb-8 px-6">
+    <p className="text-center text-gray-500 text-sm">Copyright 2024 © MAHESH PATANG WALA Designed & Developed By: Royals Webtech Pvt. Ltd.</p>
+  </div>
+</div>
 
-        {/* Footer (Optional) */}
-        <div className="pb-8 px-6">
-          <p className="text-center text-gray-500 text-sm">
-            © 2024 Your E-commerce
-          </p>
-        </div>
-      </div>
+
     </header>
   );
 }
