@@ -13,6 +13,9 @@ import Wallet from "./Pages/Wallet";
 import Watch from "./Pages/Watch";
 import Footer from "./Components/Footer";
 import ProductView from "./Pages/ProductView";
+import LoginRegister from "./Pages/LoginRegister";
+import About from "./Pages/About";
+import Contact from "./Pages/Contact";
 
 export default function App() {
 
@@ -36,6 +39,9 @@ export default function App() {
           <Route path="/wallet" element={<Wallet api={productApi} />} />
           <Route path="/watch" element={<Watch api={productApi} />} />
           <Route path="/productview" element={<ProductView />} />
+          <Route path="/register" element={<LoginRegister />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>
       <div>
