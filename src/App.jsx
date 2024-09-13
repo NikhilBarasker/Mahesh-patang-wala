@@ -1,3 +1,4 @@
+import React from "react";
 import Navbar from "./Components/Navbar";
 import Home from "./Components/Home";
 import { Route, Routes } from "react-router-dom";
@@ -11,9 +12,10 @@ import Rings from "./Pages/Rings";
 import Wallet from "./Pages/Wallet";
 import Watch from "./Pages/Watch";
 import Footer from "./Components/Footer";
+import ProductView from "./Pages/ProductView";
+import LoginRegister from "./Pages/LoginRegister";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
-import Terms from "./Pages/Terms";
 
 export default function App() {
 
@@ -28,17 +30,18 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/bracelets" element={<Bracelets api={productApi} />} />
-          <Route path="/cap" element={<Cap />} />
-          <Route path="/earring" element={<Earrings />} />
-          <Route path="/goggles" element={<Goggles />} />
-          <Route path="/keychain" element={<KeyChain />} />
-          <Route path="/offers" element={<Offers />} />
-          <Route path="/rings" element={<Rings />} />
-          <Route path="/wallet" element={<Wallet />} />
-          <Route path="/watch" element={<Watch />} />
+          <Route path="/cap" element={<Cap api={productApi} />} />
+          <Route path="/earring" element={<Earrings api={productApi} />} />
+          <Route path="/goggles" element={<Goggles api={productApi} />} />
+          <Route path="/keychain" element={<KeyChain api={productApi} />} />
+          <Route path="/offers" element={<Offers api={productApi} />} />
+          <Route path="/rings" element={<Rings api={productApi} />} />
+          <Route path="/wallet" element={<Wallet api={productApi} />} />
+          <Route path="/watch" element={<Watch api={productApi} />} />
+          <Route path="/productview" element={<ProductView />} />
+          <Route path="/register" element={<LoginRegister />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/terms" element={<Terms />} />
         </Routes>
       </div>
       <div>

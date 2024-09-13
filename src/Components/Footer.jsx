@@ -98,7 +98,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="terms"><a
+                <Link to="/terms"><a
                   href="javascript:void(0)"
                   className=" text-sm transition-all text-gray-500 hover:text-black"
                 >
@@ -182,7 +182,7 @@ export default function Footer() {
             </a>
           </div>
 
-          <p className=" text-sm">© ReadymadeUI. All rights reserved.</p>
+          <p className=" text-sm">Copyright 2024 © MAHESH PATANG WALA Designed & Developed By: Royals Webtech Pvt. Ltd.</p>
         </div>
       </footer>
     </div>

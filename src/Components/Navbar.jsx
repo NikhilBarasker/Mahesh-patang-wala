@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FaStoreAlt, FaShoppingCart } from "react-icons/fa";
 import { MdGroups } from "react-icons/md";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/Logo.png";
 import { IoMdHeartEmpty } from "react-icons/io";
 
@@ -31,23 +31,69 @@ function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 w-full shadow-md font-[sans-serif] tracking-wide z-50 bg-white">
-   <section className="md:flex lg:items-center relative py-3 lg:px-10 px-4 border-gray-200 border-b lg:min-h-[80px] max-lg:min-h-[60px]">
-  <div className="flex items-center justify-between max-lg:flex-col">
-    <div
-      onClick={handelhomenavigation}
-      className="shrink-0 max-lg:mb-3 cursor-pointer"
-    >
-      <img src={Logo} alt="logo" className="w-[100px] ml-[60px]" />
-    </div>
+      <section className="md:flex lg:items-center relative py-3 lg:px-10 px-4 border-gray-200 border-b lg:min-h-[80px] max-lg:min-h-[60px]">
+        <div className="flex items-center justify-between max-lg:flex-col">
+          <div
+            onClick={handelhomenavigation}
+            className="shrink-0 max-lg:mb-3 cursor-pointer"
+          >
+            <img src={Logo} alt="logo" className="w-[100px] ml-[60px]" />
+          </div>
 
-    {/* Search box and cart for mobile */}
-    <div className="flex items-center w-full max-lg:w-full max-lg:flex-row max-lg:space-x-2">
-      <input
-        type="text"
-        placeholder="Search something..."
-        className="xl:w-96 max-lg:w-full lg:ml-10 bg-gray-100 focus:bg-transparent px-6 rounded h-11 outline-[#333] text-sm transition-all"
-      />
-       <li className="max-lg:py-2 max-lg:px-3 cursor-pointer list-none lg:hidden">
+          {/* Search box and cart for mobile */}
+          <div className="flex items-center w-full max-lg:w-full max-lg:flex-row max-lg:space-x-2">
+            <input
+              type="text"
+              placeholder="Search something..."
+              className="xl:w-96 max-lg:w-full lg:ml-10 bg-gray-100 focus:bg-transparent px-6 rounded h-11 outline-[#333] text-sm transition-all"
+            />
+
+            <li className="max-lg:py-2 max-lg:px-3 cursor-pointer list-none lg:hidden">
+              <span className="relative">
+                <IoMdHeartEmpty className="inline" size={22} />
+                <span className="absolute left-auto -ml-1 -top-1 rounded-full bg-red-500 px-1 py-0 text-xs text-white">
+                  0
+                </span>
+              </span>
+            </li>
+
+            <li className="max-lg:py-2 max-lg:px-3 cursor-pointer list-none lg:hidden">
+              <span className="relative">
+                <FaShoppingCart className="inline" size={20} />
+                <span className="absolute left-auto -ml-1 -top-1 rounded-full bg-red-500 px-1 py-0 text-xs text-white">
+                  0
+                </span>
+              </span>
+            </li>
+
+            <li id="toggleOpen" className="lg:hidden list-none">
+              <button onClick={() => setMenuOpen(!menuOpen)}>
+                <AiOutlineMenu className="w-7 h-7" fill="#333" />
+              </button>
+            </li>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-between w-full max-lg:flex-col max-lg:mt-4">
+          <div className="ml-auto flex items-center">
+            <ul className="flex items-center justify-between w-full">
+              <li className="max-sm:hidden flex text-[15px] max-lg:py-2 px-3 font-medium text-[#333] cursor-pointer">
+                <FaStoreAlt className="mr-2" size={20} />
+                Stores and Services
+              </li>
+              <li className="max-sm:hidden flex text-[15px] max-lg:py-2 px-3 font-medium text-[#333] cursor-pointer">
+                <MdGroups className="mr-2" size={20} />
+                Community
+              </li>
+             <Link to="register">
+              <li className="flex text-[15px] max-lg:py-2 px-3 hover:text-[#007bff] hover:fill-[#007bff] lg:flex hidden">
+                <button className="px-4 py-2 text-sm hover:bg-black hover:text-white rounded font-semibold text-[#333] border-2 border-[#333] bg-transparent">
+                  Sign In
+                </button>
+              </li>
+              </Link>
+              {/* Cart icon for large screens */}
+              <li className="max-lg:hidden flex text-[15px] max-lg:py-2 px-3 cursor-pointer">
                 <span className="relative">
                   <IoMdHeartEmpty className="inline" size={22} />
                   <span className="absolute left-auto -ml-1 -top-1 rounded-full bg-red-500 px-1 py-0 text-xs text-white">
@@ -55,64 +101,18 @@ function Navbar() {
                   </span>
                 </span>
               </li>
-      <li className="max-lg:py-2 max-lg:px-3 cursor-pointer list-none lg:hidden">
-        <span className="relative">
-          <FaShoppingCart className="inline" size={20} />
-          <span className="absolute left-auto -ml-1 -top-1 rounded-full bg-red-500 px-1 py-0 text-xs text-white">
-            0
-          </span>
-        </span>
-      </li>
-      
-      <li id="toggleOpen" className="lg:hidden list-none">
-        <button onClick={() => setMenuOpen(!menuOpen)}>
-          <AiOutlineMenu className="w-7 h-7" fill="#333" />
-        </button>
-      </li>
-    </div>
-  </div>
-
-  <div className="flex items-center justify-between w-full max-lg:flex-col max-lg:mt-4">
-    <div className="ml-auto flex items-center">
-      <ul className="flex items-center justify-between w-full">
-        <li className="max-sm:hidden flex text-[15px] max-lg:py-2 px-3 font-medium text-[#333] cursor-pointer">
-          <FaStoreAlt className="mr-2" size={20} />
-          Stores and Services
-        </li>
-        <li className="max-sm:hidden flex text-[15px] max-lg:py-2 px-3 font-medium text-[#333] cursor-pointer">
-          <MdGroups className="mr-2" size={20} />
-          Community
-        </li>
-        <li className="flex text-[15px] max-lg:py-2 px-3 hover:text-[#007bff] hover:fill-[#007bff] lg:flex hidden">
-          <button className="px-4 py-2 text-sm hover:bg-black hover:text-white rounded font-semibold text-[#333] border-2 border-[#333] bg-transparent">
-            Sign In
-          </button>
-        </li>
-
-        <li className="max-lg:hidden flex text-[15px] max-lg:py-2 px-3 cursor-pointer">
+              <li className="max-lg:hidden flex text-[15px] max-lg:py-2 px-3 cursor-pointer">
                 <span className="relative">
-                  <IoMdHeartEmpty className="inline" size={22} />
+                  <FaShoppingCart className="inline" size={20} />
                   <span className="absolute left-auto -ml-1 -top-1 rounded-full bg-red-500 px-1 py-0 text-xs text-white">
                     0
                   </span>
                 </span>
               </li>
-
-        {/* Cart icon for large screens */}
-        <li className="max-lg:hidden flex text-[15px] max-lg:py-2 px-3 cursor-pointer">
-          <span className="relative">
-            <FaShoppingCart className="inline" size={20} />
-            <span className="absolute left-auto -ml-1 -top-1 rounded-full bg-red-500 px-1 py-0 text-xs text-white">
-              0
-            </span>
-          </span>
-        </li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-
+            </ul>
+          </div>
+        </div>
+      </section>
 
       {/* Desktop Category Section */}
       <div className="hidden md:flex items-center justify-center py-3 bg-gray-100">
@@ -133,9 +133,8 @@ function Navbar() {
       {/* Mobile Menu */}
       <div
         id="collapseMenu"
-        className={`fixed inset-0 z-50 bg-white transition-transform duration-500 ease-in-out transform ${
-          menuOpen ? "translate-x-0" : "translate-x-full"
-        } flex flex-col justify-between`}
+        className={`fixed inset-0 z-50 bg-white transition-transform duration-500 ease-in-out transform ${menuOpen ? "translate-x-0" : "translate-x-full"
+          } flex flex-col justify-between`}
       >
         {/* Close Button */}
         <button
@@ -166,14 +165,18 @@ function Navbar() {
 
         {/* Sign In Button in Mobile Menu */}
         <div className="px-6 py-4">
+         <Link to="/register">
           <button className="w-full px-4 py-2 text-xs sm:text-sm hover:bg-black hover:text-white rounded font-semibold text-[#333] border-2 border-[#333] bg-transparent">
             Sign In
           </button>
+          </Link>
         </div>
 
         {/* Footer (Optional) */}
         <div className="pb-8 px-6">
-          <p className="text-center text-gray-500 text-sm">© 2024 Your E-commerce</p>
+          <p className="text-center text-gray-500 text-sm">
+            © 2024 Your E-commerce
+          </p>
         </div>
       </div>
     </header>
