@@ -11,14 +11,14 @@ function Navbar() {
   const navigate = useNavigate();
   const category = [
     { name: "Earrings", path: "/earring" },
-    { name: "Rings", path: "/rings" },
+    { name: "Rings", path: "/ring" },
     { name: "Key Chains", path: "/keychain" },
     { name: "Wallet", path: "/wallet" },
     { name: "Caps", path: "/cap" },
-    { name: "Goggles", path: "/goggles" },
-    { name: "Bracelets", path: "/bracelets" },
+    { name: "Goggles", path: "/goggle" },
+    { name: "Bracelets", path: "/bracelet" },
     { name: "Watch", path: "/watch" },
-    { name: "Special offers", path: "/offers" },
+    { name: "Special offers", path: "/offer" },
   ];
 
   const handleNavigation = (path) => {

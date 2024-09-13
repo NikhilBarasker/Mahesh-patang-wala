@@ -26,13 +26,13 @@ export default function App() {
       <div className="mt-[220px] lg:mt-[130px]">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/bracelets" element={<Bracelets api={productApi} />} />
+          <Route path="/bracelet" element={<Bracelets api={productApi} />} />
           <Route path="/cap" element={<Cap api={productApi} />} />
           <Route path="/earring" element={<Earrings api={productApi} />} />
-          <Route path="/goggles" element={<Goggles api={productApi} />} />
+          <Route path="/goggle" element={<Goggles api={productApi} />} />
           <Route path="/keychain" element={<KeyChain api={productApi} />} />
-          <Route path="/offers" element={<Offers api={productApi} />} />
-          <Route path="/rings" element={<Rings api={productApi} />} />
+          <Route path="/offer" element={<Offers api={productApi} />} />
+          <Route path="/ring" element={<Rings api={productApi} />} />
           <Route path="/wallet" element={<Wallet api={productApi} />} />
           <Route path="/watch" element={<Watch api={productApi} />} />
           <Route path="/productview" element={<ProductView />} />
