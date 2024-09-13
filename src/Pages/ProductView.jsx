@@ -47,12 +47,12 @@ export default function ProductView() {
                 <img
                   src={item.image}
                   alt="Product"
-                  className="lg:w-[450px] w-3/4 h-full object-contain max-lg:p-8"
+                  className="lg:w-[350px] w-3/4 h-full object-contain max-lg:p-8"
                 />
               </div>
             </div>
 
-            <div className="bg-gradient-to-r from-gray-900 via-gray-900 to-gray-900 lg:col-span-2 bg-gray-100 py-6 px-8 h-full">
+            <div className="bg-gradient-to-r from-gray-900 via-gray-900 to-gray-900 lg:col-span-2 bg-gray-100 py-6 px-8">
               <div>
                 <h2 className="text-2xl font-bold text-white">{item.title}</h2>
 
@@ -131,10 +131,10 @@ export default function ProductView() {
                 </button>
               </div>
 
-              <div className="flex flex-wrap items-center text-sm text-white mt-8">
+              {/* <div className="flex flex-wrap items-center text-sm text-white mt-8">
                 <MdOutlineDeliveryDining className="w-6 h-6 mr-3 fill-current" />
                 Free delivery on order $100
-              </div>
+              </div> */}
             </div>
           </div>
         ))}

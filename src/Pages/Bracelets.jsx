@@ -7,22 +7,32 @@ import { CiHeart } from "react-icons/ci";
 export default function Bracelets({ api }) {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
+  const [wishlistStatus, setWishlistStatus] = useState({}); 
 
   const fetchdata = async () => {
     const response = await axios.get(api);
     setData(response.data);
+    const initialStatus = response.data.reduce((acc, item) => {
+      acc[item.id] = false;
+      return acc;
+    }, {});
+    setWishlistStatus(initialStatus);
   };
 
   const handleProductView = (product) => {
-    console.log("Selected product:", product);
-    navigate("/productview",{state:{product}});
+    navigate("/productview", { state: { product } });
+  };
+
+  const toggleWishlist = (itemId) => {
+    setWishlistStatus((prevState) => ({
+      ...prevState,
+      [itemId]: !prevState[itemId],
+    }));
   };
 
   useEffect(() => {
     fetchdata();
   }, []);
-
-  console.log("Data ", data);
 
   return (
     <div>
@@ -38,8 +48,12 @@ export default function Bracelets({ api }) {
                   className="bg-white w-[300px] my-3 p-5 hover:-translate-y-2 transition-all relative"
                   key={item.id}
                 >
-                  <div className="bg-gray-100 w-10 h-10 flex items-center justify-center rounded-full absolute top-4 right-4">
-                    <div>
+                  <div
+                    className="bg-gray-100 w-10 h-10 flex items-center justify-center rounded-full absolute top-4 right-4"
+                    onClick={() => toggleWishlist(item.id)}
+                  >
+                    {/* Toggle between SVG and React icon */}
+                    {wishlistStatus[item.id] ? (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="#FF6F61" // Coral color
@@ -54,8 +68,9 @@ export default function Bracelets({ api }) {
                           d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
                         />
                       </svg>
+                    ) : (
                       <CiHeart className="text-gray-800" size={25} />
-                    </div>
+                    )}
                   </div>
 
                   <div className="w-full flex justify-center">
