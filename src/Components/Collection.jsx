@@ -10,43 +10,38 @@ import Rings from "../assets/Rings.jpg";
 import Wallet from "../assets/Wallet.jpg";
 import Watch from "../assets/Watch.jpg";
 import Perfume from "../assets/Perfume.jpg";
+import { useNavigate } from "react-router-dom";
 
 export default function Collection() {
+
+  const navigate = useNavigate();
+
+const images = [
+  { image: Cap2, name: "cap" },
+  { image: Goggles, name: "goggle" },
+  { image: Bresalate, name: "bresalate" },
+  { image: Earrings, name: "earring" },
+  { image: Rings, name: "ring" },
+  { image: Keycgain, name: "keychain" },
+  { image: Wallet, name: "wallet" },
+  { image: Watch, name: "watch" },
+  { image: Perfume, name: "perfume" },
+  { image: Offers, name: "offer" },
+];
+  
+  const handleClick = (name) => {
+    navigate(`/${name}`)
+  }
+
   return (
     <div>
       <HomeHeading heading="Our Collection" />
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 m-[50px]">
-        <div>
-          <img src={Cap2} />
-        </div>
-        <div>
-          <img src={Goggles} />
-        </div>
-        <div>
-          <img src={Bresalate} />
-        </div>
-        <div>
-          <img src={Earrings} />
-        </div>
-        <div>
-          <img src={Keycgain} />
-        </div>
-        <div>
-          <img src={Rings} />
-        </div>
-
-        <div>
-          <img src={Wallet} />
-        </div>
-        <div>
-          <img src={Watch} />
-        </div>
-        <div>
-          <img src={Perfume} />
-        </div>
-        <div>
-          <img src={Offers} />
-        </div>
+        {images.map((item) => (
+          <div>
+            <img onClick={()=>handleClick(item.name)} className="cursor-pointer" src={item.image} />
+          </div>
+        ))}
       </div>
     </div>
   );

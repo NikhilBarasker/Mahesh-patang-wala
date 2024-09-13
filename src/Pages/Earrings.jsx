@@ -29,7 +29,7 @@ export default function Earrings({ api }) {
        <div className="font-[sans-serif] bg-gray-100">
          <div className="p-4 mx-auto lg:max-w-7xl sm:max-w-full justify-center items-center flex flex-col">
            <h2 className="text-4xl font-extrabold text-gray-800 mb-12">
-             Bracelets
+             Earrings
            </h2>
            <div className="cursor-pointer">
              <div className="overflow-x-hidden justify-center items-center grid grid-cols-1 lg:grid-cols-4 max-xl:gap-1 gap-6">
