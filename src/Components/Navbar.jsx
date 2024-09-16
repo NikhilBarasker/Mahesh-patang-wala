@@ -28,6 +28,9 @@ function Navbar() {
   const handelhomenavigation = () => {
     navigate("/");
   };
+  const wishListNavigation = () => {
+    navigate('/wishlsit')
+  }
 
   return (
     <header className="fixed top-0 left-0 w-full shadow-md font-[sans-serif] tracking-wide z-50 bg-white">
@@ -95,7 +98,7 @@ function Navbar() {
               {/* Cart icon for large screens */}
               <li className="max-lg:hidden flex text-[15px] max-lg:py-2 px-3 cursor-pointer">
                 <span className="relative">
-                  <IoMdHeartEmpty className="inline" size={22} />
+                  <IoMdHeartEmpty onClick={wishListNavigation} className="inline" size={22} />
                   <span className="absolute left-auto -ml-1 -top-1 rounded-full bg-red-500 px-1 py-0 text-xs text-white">
                     0
                   </span>
