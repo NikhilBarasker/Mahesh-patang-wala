@@ -17,6 +17,7 @@ import LoginRegister from "./Pages/LoginRegister";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
 import WishlistProductPage from "./Pages/WishlistProductPage";
+import CartProducts from "./Pages/CartProducts";
 
 export default function App() {
 
@@ -44,6 +45,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/wishlist" element={<WishlistProductPage />} />
+          <Route path="/cart" element={<CartProducts />} />
         </Routes>
       </div>
       <div>

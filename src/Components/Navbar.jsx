@@ -5,10 +5,18 @@ import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/Logo.png";
 import { IoMdHeartEmpty } from "react-icons/io";
+import { useSelector } from "react-redux";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const wishlistProducts = useSelector(
+    (state) => state.wishlist.wishlistProducts
+  );
+  const cartProducts = useSelector(
+    (state) => state.cart.cartProducts
+  );
+
   const category = [
     { name: "Earrings", path: "/earring" },
     { name: "Rings", path: "/ring" },
@@ -28,9 +36,18 @@ function Navbar() {
   const handelhomenavigation = () => {
     navigate("/");
   };
+
   const wishListNavigation = () => {
-    navigate('/wishlsit')
-  }
+    navigate("/wishlist");
+  };
+  const cartNavigation = () => {
+    navigate("/cart");
+  };
+
+    const totalCartQuantity = cartProducts.reduce(
+      (total, product) => total + product.quantity,
+      0
+    );
 
   return (
     <header className="fixed top-0 left-0 w-full shadow-md font-[sans-serif] tracking-wide z-50 bg-white">
@@ -43,7 +60,6 @@ function Navbar() {
             <img src={Logo} alt="logo" className="w-[100px] ml-[60px]" />
           </div>
 
-          {/* Search box and cart for mobile */}
           <div className="flex items-center w-full max-lg:w-full max-lg:flex-row max-lg:space-x-2">
             <input
               type="text"
@@ -53,9 +69,13 @@ function Navbar() {
 
             <li className="max-lg:py-2 max-lg:px-3 cursor-pointer list-none lg:hidden">
               <span className="relative">
-                <IoMdHeartEmpty className="inline" size={22} />
+                <IoMdHeartEmpty
+                  onClick={wishListNavigation}
+                  className="inline"
+                  size={22}
+                />
                 <span className="absolute left-auto -ml-1 -top-1 rounded-full bg-red-500 px-1 py-0 text-xs text-white">
-                  0
+                  {wishlistProducts.length}
                 </span>
               </span>
             </li>
@@ -88,27 +108,34 @@ function Navbar() {
                 <MdGroups className="mr-2" size={20} />
                 Community
               </li>
-             <Link to="register">
-              <li className="flex text-[15px] max-lg:py-2 px-3 hover:text-[#007bff] hover:fill-[#007bff] lg:flex hidden">
-                <button className="px-4 py-2 text-sm hover:bg-black hover:text-white rounded font-semibold text-[#333] border-2 border-[#333] bg-transparent">
-                  Sign In
-                </button>
-              </li>
+              <Link to="/register">
+                <li className="flex text-[15px] max-lg:py-2 px-3 hover:text-[#007bff] hover:fill-[#007bff] lg:flex hidden">
+                  <button className="px-4 py-2 text-sm hover:bg-black hover:text-white rounded font-semibold text-[#333] border-2 border-[#333] bg-transparent">
+                    Sign In
+                  </button>
+                </li>
               </Link>
-              {/* Cart icon for large screens */}
+
               <li className="max-lg:hidden flex text-[15px] max-lg:py-2 px-3 cursor-pointer">
                 <span className="relative">
-                  <IoMdHeartEmpty onClick={wishListNavigation} className="inline" size={22} />
-                  <span className="absolute left-auto -ml-1 -top-1 rounded-full bg-red-500 px-1 py-0 text-xs text-white">
-                    0
+                  <IoMdHeartEmpty
+                    onClick={wishListNavigation}
+                    className="inline"
+                    size={22}
+                  />
+                  <span
+                    onClick={cartNavigation}
+                    className="absolute left-auto -ml-1 -top-1 rounded-full bg-red-500 px-1 py-0 text-xs text-white"
+                  >
+                    {wishlistProducts.length}
                   </span>
                 </span>
               </li>
-              <li className="max-lg:hidden flex text-[15px] max-lg:py-2 px-3 cursor-pointer">
+              <li onClick={cartNavigation} className="max-lg:hidden flex text-[15px] max-lg:py-2 px-3 cursor-pointer">
                 <span className="relative">
                   <FaShoppingCart className="inline" size={20} />
                   <span className="absolute left-auto -ml-1 -top-1 rounded-full bg-red-500 px-1 py-0 text-xs text-white">
-                    0
+                    {totalCartQuantity}
                   </span>
                 </span>
               </li>
@@ -117,7 +144,6 @@ function Navbar() {
         </div>
       </section>
 
-      {/* Desktop Category Section */}
       <div className="hidden md:flex items-center justify-center py-3 bg-gray-100">
         <nav className="flex gap-5 space-x-4 mr-[400px]">
           {category.map((item) => (
@@ -133,59 +159,53 @@ function Navbar() {
         </nav>
       </div>
 
-      {/* Mobile Menu */}
       <div
-  id="collapseMenu"
-  className={`fixed inset-0 z-50 bg-white transition-transform duration-500 ease-in-out transform ${
-    menuOpen ? "translate-x-0" : "translate-x-full"
-  } flex flex-col justify-between`}
->
-  {/* Close Button */}
-  <button
-    id="toggleClose"
-    className="fixed top-4 right-4 z-50 p-3 rounded-full bg-gray-100 shadow-lg hover:shadow-2xl hover:bg-gray-200 transition-all duration-300 ease-in-out"
-    onClick={() => setMenuOpen(false)}
-  >
-    <AiOutlineClose className="w-7 h-7 text-gray-800" />
-  </button>
-
-  {/* Menu List */}
-  <ul className="flex flex-col flex-grow mt-16 space-y-6 overflow-y-auto">
-    {category.map((item) => (
-      <li
-        key={item.name}
-        onClick={() => handleNavigation(item.path)}
-        className="py-3 px-6 border-b border-gray-300 hover:bg-gray-100 cursor-pointer"
+        id="collapseMenu"
+        className={`fixed inset-0 z-50 bg-white transition-transform duration-500 ease-in-out transform ${
+          menuOpen ? "translate-x-0" : "translate-x-full"
+        } flex flex-col justify-between`}
       >
-        <Link
-          to={item.path}
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="text-black text-lg font-semibold block"
+        <button
+          id="toggleClose"
+          className="fixed top-4 right-4 z-50 p-3 rounded-full bg-gray-100 shadow-lg hover:shadow-2xl hover:bg-gray-200 transition-all duration-300 ease-in-out"
+          onClick={() => setMenuOpen(false)}
         >
-          {item.name}
-        </Link>
-      </li>
-    ))}
-  </ul>
+          <AiOutlineClose className="w-7 h-7 text-gray-800" />
+        </button>
 
-  {/* Sign In Button in Mobile Menu */}
-  <div className="px-6 py-4">
-    <Link to="/register"
-    onClick={() => setMenuOpen(!menuOpen)}
-    >
-      <button className="w-full px-4 py-2 text-xs sm:text-sm hover:bg-black hover:text-white rounded font-semibold text-[#333] border-2 border-[#333] bg-transparent">
-        Sign In
-      </button>
-    </Link>
-  </div>
+        <ul className="flex flex-col flex-grow mt-16 space-y-6 overflow-y-auto">
+          {category.map((item) => (
+            <li
+              key={item.name}
+              onClick={() => handleNavigation(item.path)}
+              className="py-3 px-6 border-b border-gray-300 hover:bg-gray-100 cursor-pointer"
+            >
+              <Link
+                to={item.path}
+                onClick={() => setMenuOpen(!menuOpen)}
+                className="text-black text-lg font-semibold block"
+              >
+                {item.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
 
-  {/* Footer (Optional) */}
-  <div className="pb-8 px-6">
-    <p className="text-center text-gray-500 text-sm">Copyright 2024 © MAHESH PATANG WALA Designed & Developed By: Royals Webtech Pvt. Ltd.</p>
-  </div>
-</div>
+        <div className="px-6 py-4">
+          <Link to="/register" onClick={() => setMenuOpen(!menuOpen)}>
+            <button className="w-full px-4 py-2 text-xs sm:text-sm hover:bg-black hover:text-white rounded font-semibold text-[#333] border-2 border-[#333] bg-transparent">
+              Sign In
+            </button>
+          </Link>
+        </div>
 
-
+        <div className="pb-8 px-6">
+          <p className="text-center text-gray-500 text-sm">
+            Copyright 2024 © MAHESH PATANG WALA Designed & Developed By: Royals
+            Webtech Pvt. Ltd.
+          </p>
+        </div>
+      </div>
     </header>
   );
 }
