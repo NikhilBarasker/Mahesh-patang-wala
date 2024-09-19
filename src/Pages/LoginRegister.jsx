@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function LoginRegister() {
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+    <div className="min-h-screen bg-gray-100 flex">
       <div className="container mx-auto p-10 bg-white shadow-2xl rounded-lg">
         <div className="flex flex-wrap justify-center items-center">
           {/* Login Box */}

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FaStoreAlt, FaShoppingCart } from "react-icons/fa";
 import { MdGroups } from "react-icons/md";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, NavLink} from "react-router-dom";
 import Logo from "../assets/Logo.png";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { useSelector } from "react-redux";
@@ -80,11 +80,11 @@ function Navbar() {
               </span>
             </li>
 
-            <li className="max-lg:py-2 max-lg:px-3 cursor-pointer list-none lg:hidden">
+            <li onClick={cartNavigation} className="max-lg:py-2 max-lg:px-3 cursor-pointer list-none lg:hidden">
               <span className="relative">
                 <FaShoppingCart className="inline" size={20} />
                 <span className="absolute left-auto -ml-1 -top-1 rounded-full bg-red-500 px-1 py-0 text-xs text-white">
-                  0
+                {totalCartQuantity}
                 </span>
               </span>
             </li>
@@ -146,16 +146,18 @@ function Navbar() {
 
       <div className="hidden md:flex items-center justify-center py-3 bg-gray-100">
         <nav className="flex gap-5 space-x-4 mr-[400px]">
-          {category.map((item) => (
-            <a
-              key={item.name}
-              href="javascript:void(0)"
-              className="text-[#333] text-[15px] font-medium hover:text-[#007bff]"
-              onClick={() => handleNavigation(item.path)}
-            >
-              {item.name}
-            </a>
-          ))}
+        {category.map((item) => (
+  <NavLink
+    key={item.name}
+    to={item.path}
+    className={`text-[#333] text-[15px] font-medium duration-200 
+      ${item.path === window.location.pathname ? "text-blue-500" : "text-gray-700"} 
+      hover:text-[#007bff] border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:p-0`}
+    onClick={() => handleNavigation(item.path)}
+     >
+    {item.name}
+  </NavLink>
+))}
         </nav>
       </div>
 

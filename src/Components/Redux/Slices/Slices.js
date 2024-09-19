@@ -31,13 +31,11 @@ const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const productExists = state.cartProducts.find(
-        (product) => product.id === action.payload.id // Corrected to '==='
+        (product) => product.id === action.payload.id
       );
       if (productExists) {
-        // If product exists, increase quantity
         productExists.quantity += 1;
       } else {
-        // If product doesn't exist, add it with initial quantity of 1
         state.cartProducts.push({ ...action.payload, quantity: 1 });
       }
     },
@@ -46,11 +44,17 @@ const cartSlice = createSlice({
         (product) => product.id !== action.payload.id
       );
     },
+    updateCartQuantity: (state, action) => {
+      const product = state.cartProducts.find((product) => product.id === action.payload.id);
+      if (product) {
+        product.quantity = action.payload.quantity;
+      }
+    },
   },
 });
 
 export const { addToWishlist, removeFromWishlist } = wishlistSlice.actions;
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, updateCartQuantity } = cartSlice.actions;
 
 export const wishlistSliceReducer = wishlistSlice.reducer;
 export const cartSliceReducer = cartSlice.reducer;

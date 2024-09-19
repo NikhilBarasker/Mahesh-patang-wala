@@ -145,8 +145,8 @@ export default function Offers({ api }) {
                     </div>
                   </div>
                   {cartStatus[item.id] ? (
-                    <div className="w-[150px] bg-gray-200 h-[50px] my-2 mx-14 rounded-xl flex items-center justify-center text-[#333] font-bold">
-                      Already added to Cart
+                    <div className="w-[150px] bg-gray-200 h-[50px] my-2 mx-14 rounded-xl flex items-center justify-center text-[#333] font-bold p-4">
+                     Added to Cart
                     </div>
                   ) : (
                     <button
