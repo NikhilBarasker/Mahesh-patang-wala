@@ -38,23 +38,23 @@ const WishlistProductPage = () => {
                 <p className="text-gray-600 mt-2">
                   <FaRupeeSign className="inline" /> {item.price}
                 </p>
-                <div className="flex justify-between mt-4">
+                <div className="flex space-x-4 mt-4">
                   {addedToCart[item.id] ? (
                     <button
-                      className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                      className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded w-full"
                     >
                       Added to Cart
                     </button>
                   ) : (
                     <button
-                      className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
+                      className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded w-full"
                       onClick={() => handleAddToCart(item)}
                     >
                       Add to Cart
                     </button>
                   )}
                   <button
-                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded w-full"
                     onClick={() => handleRemoveFromWishlist(item)}
                   >
                     Remove
@@ -70,9 +70,10 @@ const WishlistProductPage = () => {
               <p className="text-lg text-gray-500">
                 Browse our products and add items to your wishlist
               </p>
-             <Link to="/"> <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mt-4">
-                Start Shopping
-              </button>
+              <Link to="/">
+                <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mt-4">
+                  Start Shopping
+                </button>
               </Link>
             </div>
           )}

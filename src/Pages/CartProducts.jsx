@@ -34,7 +34,7 @@ export default function CartProducts() {
   
 
   return (
-    <div className="max-w-4xl mx-auto bg-white py-8 md:px-8">
+    <div className=" mx-auto bg-white py-8 md:px-8">
       <h2 className="text-3xl font-bold mb-8">Shopping Cart</h2>
 
       <div className="grid md:grid-cols-2 gap-8">
@@ -81,7 +81,7 @@ export default function CartProducts() {
                   </div>
                   <div className="flex text-lg font-bold text-center md:mt-4 mt-2">
                     <FaRupeeSign className="mt-1" />
-                    {(item.price * item.quantity).toFixed(2)}
+                    {(item.price * item.quantity).toFixed(0)}
                   </div>
                 </div>
               </div>
@@ -108,37 +108,39 @@ export default function CartProducts() {
             <ul>
               <li className="flex justify-between mb-2">
                 <span>Discount</span>
-                <span>
-                  <FaRupeeSign />
+                <span className="flex gap-1">
                   {discount}
+                  <FaRupeeSign className="mt-[3px]"/>
                 </span>
               </li>
               <li className="flex justify-between mb-2">
                 <span>Shipping</span>
-                <span>
-                  <FaRupeeSign />
-                  {shipping}
+                <span className="flex gap-1">
+                {shipping}
+                  <FaRupeeSign className="mt-[3px]"/>
+                  
                 </span>
               </li>
               <li className="flex justify-between mb-2">
                 <span>Tax</span>
-                <span>
-                  <FaRupeeSign />
+                <span className="flex gap-1">
                   {tax}
+                  <FaRupeeSign className="mt-[3px]"/>
                 </span>
               </li>
-                <li className="flex justify-between font-bold">
+              <li className="flex justify-between font-bold">
                 <span>Total</span>
-                <span>
-                  <FaRupeeSign />
+                <span className="flex gap-1">
                   {finalAmount()}
+                  <FaRupeeSign className="mt-[3px]"/>
                 </span>
               </li>
             </ul>
-
+  <Link to="/checkout">
             <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md mt-4 w-full">
               Checkout
             </button>
+            </Link>
           </div>
         )}
       </div>
