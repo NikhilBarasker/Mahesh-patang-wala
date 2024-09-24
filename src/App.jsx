@@ -19,6 +19,7 @@ import Contact from "./Pages/Contact";
 import WishlistProductPage from "./Pages/WishlistProductPage";
 import CartProducts from "./Pages/CartProducts";
 import Checkout from "./Pages/Checkout";
+import TermsAndConditions from "./Pages/TermsAndConditions";
 
 export default function App() {
 
@@ -45,6 +46,7 @@ export default function App() {
           <Route path="/register" element={<LoginRegister />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/terms" element={ <TermsAndConditions />} />
           <Route path="/wishlist" element={<WishlistProductPage />} />
           <Route path="/cart" element={<CartProducts />} />
           <Route path="checkout" element={<Checkout />} />

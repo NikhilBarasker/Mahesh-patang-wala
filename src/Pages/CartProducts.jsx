@@ -61,7 +61,6 @@ export default function CartProducts() {
                     </button>
                   </div>
                 </div>
-
                 <div className="flex flex-col items-center">
                   <div className="flex items-center border border-gray-300 rounded-md">
                     <button
@@ -87,20 +86,23 @@ export default function CartProducts() {
               </div>
             ))
           ) : (
-            <div className="col-span-2 flex flex-col items-center justify-center p-10 text-center">
-              <h2 className="text-2xl font-bold text-gray-600 mb-4">
-                Your Cart is Empty
-              </h2>
-              <p className="text-lg text-gray-500">
-                Browse our products and add items to your cart
-              </p>
-             <Link to="/"> <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mt-4">
-                Start Shopping
-              </button></Link>
-            </div>
-          )}
+        <div className="flex justify-center">
+  <div className="flex flex-col items-center justify-center p-10 text-center">
+    <h2 className="text-2xl font-bold text-gray-600 mb-4">
+      Your Cart is Empty
+    </h2>
+    <p className="text-lg text-gray-500">
+      Browse our products and add items to your cart
+    </p>
+    <Link to="/">
+      <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mt-4">
+        Start Shopping
+      </button>
+    </Link>
+  </div>
+</div>
+)}
         </div>
-
         {cart.length > 0 && (
           <div className="bg-gray-50 p-8 rounded-md">
             <h3 className="text-lg font-bold mb-4">Order Summary</h3>

@@ -11,6 +11,7 @@ import {
 } from "../Components/Redux/Slices/Slices";
 import { CiHeart } from "react-icons/ci";
 import toast from "react-hot-toast";
+
 export default function Earrings({ api }) {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
