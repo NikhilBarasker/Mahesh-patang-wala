@@ -87,13 +87,13 @@ export default function Offers({ api }) {
       <div className="font-[sans-serif] bg-gray-100">
         <div className="p-4 mx-auto lg:max-w-7xl sm:max-w-full justify-center items-center flex flex-col">
           <h2 className="text-4xl font-extrabold text-gray-800 mb-12">
-            Offers
+            Perfumes
           </h2>
           <div className="cursor-pointer">
             <div className="overflow-x-hidden justify-center items-center grid grid-cols-1 lg:grid-cols-4 max-xl:gap-1 gap-6">
               {data.map((item) => (
                 <div
-                  className="bg-white w-[300px] my-3 p-5 hover:-translate-y-2 transition-all relative"
+                  className="bg-white w-[300px] my-3 p-5 relative"
                   key={item.id}
                 >
                   <div

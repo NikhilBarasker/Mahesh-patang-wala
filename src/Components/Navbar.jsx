@@ -26,7 +26,7 @@ function Navbar() {
     { name: "Goggles", path: "/goggle" },
     { name: "Bracelets", path: "/bracelet" },
     { name: "Watch", path: "/watch" },
-    { name: "Special offers", path: "/offer" },
+    { name: "Perfumes", path: "/offer" },
   ];
 
   const handleNavigation = (path) => {

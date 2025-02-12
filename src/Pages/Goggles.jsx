@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaRupeeSign } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
@@ -93,7 +93,7 @@ export default function Googles({ api }) {
             <div className="overflow-x-hidden justify-center items-center grid grid-cols-1 lg:grid-cols-4 max-xl:gap-1 gap-6">
               {data.map((item) => (
                 <div
-                  className="bg-white w-[300px] my-3 p-5 hover:-translate-y-2 transition-all relative"
+                  className="bg-white w-[300px] my-3 p-5 relative"
                   key={item.id}
                 >
                   <div
